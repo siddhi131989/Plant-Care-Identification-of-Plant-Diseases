@@ -25,7 +25,7 @@ def compile_model(model):
 
 # Function for Tensorflow model prediction
 def model_prediction(test_image):
-    model = tf.keras.models.load_model("/Users/siddh/OneDrive/Desktop/model final/keras_model.h5")
+    model = tf.keras.models.load_model("keras_model.h5")
     compile_model(model)  # Compile the model manually
     image = tf.keras.preprocessing.image.load_img(test_image, target_size=(128, 128))
     input_arr = tf.keras.preprocessing.image.img_to_array(image)
@@ -44,7 +44,7 @@ app_mode = st.sidebar.selectbox("Select Page", ["Home", "About", "Disease Recogn
 # Main Page
 if app_mode == "Home":
     st.header(" PLANTCARE: PLANT DISEASE DETECTION")
-    image_path = "/Users/siddh/OneDrive/Desktop/model final/home_page.jpeg"
+    image_path = "home_page.jpeg"
     st.image(image_path, use_column_width=True)
     st.markdown("""
     Welcome to the PlantCare: Plant Disease Recognition System! 🌿🔍
@@ -95,7 +95,7 @@ elif app_mode == "Disease Recognition":
             result_index = model_prediction(test_image)
             # Reading Labels
             # Load labels
-            labels = load_labels("/Users/siddh/OneDrive/Desktop/model final/labels.txt")
+            labels = load_labels("labels.txt")
             st.success("Model is Predicting it's a {}".format(labels[result_index]))
     else:
         st.warning("Please upload an image first.")
